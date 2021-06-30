@@ -46,7 +46,7 @@ const serverConfig = {
   tunnel: false,
   host: 'localhost',
   port: 9000,
-  logPrefix: "IT-academy",
+  logPrefix: "LocalServer",
   notify: false
 };
 
@@ -72,7 +72,7 @@ const stylesBuild = () => src(path.src.style)
   .pipe(sourcemaps.init())
   .pipe(plumber())
   .pipe(sass())
-  .pipe(replace(/(url\(")[.|..\/]+(img\/.+\..+"\))/g, '$1../../$2'))
+  .pipe(replace(/(url\(")[.|..\/]+(img\/.+\..+"\))/g, '$1../$2'))
   .pipe(plumber.stop())
   .pipe(sourcemaps.write('./maps/'))
   .pipe(dest(path.dist.css))
